@@ -23,19 +23,19 @@ All views run directly off live queries against MySQL — no data duplication, n
 
 ## Screenshots
 
-### Login Page
+**Login Page**
 ![Login page](screenshots/login.png)
 
-### Dashboard Overview
+**Dashboard Overview**
 ![Dashboard overview](screenshots/dashboard-overview.png)
 
-### Revenue by Brand
+**Revenue by Brand**
 ![Revenue by brand](screenshots/revenue-by-brand.png)
 
-### Update Order Status (Only authorized users can update) 
+**Update Order Status (Only authorized users can update)**
 ![Update order status](screenshots/update-order-status.png)
 
-### Invertory View
+**Invertory View**
 ![Inventory view](screenshots/inventory.png)
 
 ---
@@ -44,7 +44,7 @@ All views run directly off live queries against MySQL — no data duplication, n
 
 > Export your ERD (from MySQL Workbench, dbdiagram.io, or similar) as a PNG and drop it in `docs/erd.png`, then this will render automatically.
 
-![ERD](docs/erd.png)
+![ERD](docs/erd.svg)
 
 **Core entities:**
 - `Buyer` — customers, with `BuyerPhone` for multivalued phone numbers
@@ -138,7 +138,7 @@ dealerlens/
 ├── .streamlit/
 │   └── secrets.toml          # Local-only DB credentials (never committed)
 ├── docs/
-│   ├── erd.png                # Entity-relationship diagram
+│   ├── erd.svg                # Entity-relationship diagram
 │   └── relational-schema.png  # Relational schema diagram
 |   └── workflow-diagram.svg   # Workflow diagram
 └── screenshots/
