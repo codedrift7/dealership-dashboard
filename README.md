@@ -44,8 +44,6 @@ All views run directly off live queries against MySQL — no data duplication, n
 
 ## Entity-Relationship Diagram (ERD)
 
-> Export your ERD (from MySQL Workbench, dbdiagram.io, or similar) as a PNG and drop it in `docs/erd.png`, then this will render automatically.
-
 ![ERD](docs/erd.svg)
 
 **Core entities:**
@@ -69,8 +67,6 @@ End-to-end flow from login through role-gated actions:
 ---
 
 ## Relational Schema
-
-> Paste your relational schema diagram (tables + PK/FK arrows) at `docs/relational-schema.png`, or keep the text version below as a lightweight fallback.
 
 ![Relational schema](docs/relational-schema.png)
 
