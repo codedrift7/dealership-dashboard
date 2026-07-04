@@ -212,7 +212,7 @@ Live app: `https://your-app-name.streamlit.app` *(update once deployed)*
 
 ---
 
-## Notes / Limitations
+## Notes/Future Improvements
 
 - This is a client application over MySQL, not a DBMS itself — MySQL handles storage, constraints, and stock-management triggers; this app is the read/write interface on top.
 - Session state is per-browser-tab and in-memory only; there's no persistent "remember me" or JWT-based session token yet — closing the tab logs you out.
