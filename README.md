@@ -1,6 +1,8 @@
 # 🏎️ DealerLens — Dealership Management Dashboard
 
-A single-page Streamlit dashboard built on top of a relational MySQL database for a car dealership. It surfaces KPIs, sales trends, inventory status, and employee performance from live SQL queries — no spreadsheets, no manual exports — behind a role-based login.
+DealerLens is a single-page Streamlit dashboard built on top of a relational MySQL database for a car dealership. It surfaces KPIs, sales trends, inventory status, and employee performance from live SQL queries — no spreadsheets, no manual exports — behind a role-based login.
+
+This project began as an academic database systems course project, and my goal was to extend it into a production-style web application by adding authentication, role-based access control, interactive analytics, and deployment to the cloud. The result is a dashboard that surfaces KPIs, sales trends, inventory status, and employee performance from live SQL queries—no spreadsheets or manual exports—behind a secure role-based login.
 
 ---
 
