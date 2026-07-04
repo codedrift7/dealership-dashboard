@@ -59,7 +59,7 @@ STAFF_ROLES = {"Admin", "Owner", "Manager", "Sales"}
 can_edit = st.session_state.role in STAFF_ROLES
 
 # --- 4. Main dashboard ---
-st.title("🚗 Dealership Dashboard")
+st.title("🏎️ Dealership Dashboard")
 
 customers = pd.read_sql("SELECT COUNT(*) AS n FROM Buyer", conn)["n"][0]
 employees = pd.read_sql("SELECT COUNT(*) AS n FROM Employee", conn)["n"][0]
