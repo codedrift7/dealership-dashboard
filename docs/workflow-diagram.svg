@@ -1,0 +1,200 @@
+<svg viewBox="0 0 1000 1700" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4b5563"/>
+    </marker>
+  </defs>
+
+  <rect width="1000" height="1700" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="500" y="45" text-anchor="middle" font-size="26" font-weight="700" fill="#111827">DealerLens — App Workflow</text>
+  <text x="500" y="70" text-anchor="middle" font-size="14" fill="#6b7280">Streamlit + MySQL (Aiven) dealership dashboard</text>
+
+  <!-- Swimlane headers -->
+  <rect x="20" y="100" width="280" height="1560" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+  <rect x="320" y="100" width="360" height="1560" fill="#fef3f2" stroke="#fecaca" stroke-width="1"/>
+  <rect x="700" y="100" width="280" height="1560" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
+
+  <text x="160" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#1e40af">USER (BROWSER)</text>
+  <text x="500" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#b91c1c">STREAMLIT APP (app.py)</text>
+  <text x="840" y="128" text-anchor="middle" font-size="15" font-weight="700" fill="#166534">MYSQL (AIVEN)</text>
+
+  <!-- ===== Box style helper via repeated rects ===== -->
+
+  <!-- User: Open app -->
+  <rect x="60" y="160" width="200" height="55" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="160" y="192" text-anchor="middle" font-size="13" fill="#1e3a8a">Open app URL</text>
+
+  <!-- App: connect to MySQL -->
+  <rect x="360" y="160" width="280" height="55" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="500" y="185" text-anchor="middle" font-size="13" fill="#7f1d1d">Connect to MySQL via</text>
+  <text x="500" y="202" text-anchor="middle" font-size="12" fill="#7f1d1d">st.secrets (host/user/pass)</text>
+
+  <!-- App: init session_state.logged_in -->
+  <rect x="360" y="245" width="280" height="55" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="500" y="270" text-anchor="middle" font-size="13" fill="#7f1d1d">Init session_state</text>
+  <text x="500" y="287" text-anchor="middle" font-size="12" fill="#7f1d1d">logged_in = False (if unset)</text>
+
+  <!-- Decision: logged in? -->
+  <polygon points="500,330 610,385 500,440 390,385" fill="#fef9c3" stroke="#eab308" stroke-width="1.5"/>
+  <text x="500" y="390" text-anchor="middle" font-size="13" fill="#713f12" font-weight="600">Logged in?</text>
+
+  <!-- NO branch: show login form -->
+  <rect x="360" y="480" width="280" height="55" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="500" y="505" text-anchor="middle" font-size="13" fill="#7f1d1d">Render centered login</text>
+  <text x="500" y="522" text-anchor="middle" font-size="12" fill="#7f1d1d">form (username + password)</text>
+
+  <!-- User enters creds -->
+  <rect x="60" y="480" width="200" height="55" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="160" y="505" text-anchor="middle" font-size="13" fill="#1e3a8a">Enter username</text>
+  <text x="160" y="522" text-anchor="middle" font-size="12" fill="#1e3a8a">&amp; password, click Log in</text>
+
+  <!-- App: query UserAccount -->
+  <rect x="360" y="565" width="280" height="55" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="500" y="590" text-anchor="middle" font-size="13" fill="#7f1d1d">SELECT PasswordHash, Role</text>
+  <text x="500" y="607" text-anchor="middle" font-size="12" fill="#7f1d1d">WHERE Username = ? AND IsActive</text>
+
+  <!-- DB: UserAccount table -->
+  <rect x="740" y="565" width="200" height="55" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="840" y="597" text-anchor="middle" font-size="13" fill="#14532d">UserAccount table</text>
+
+  <!-- App: bcrypt check -->
+  <rect x="360" y="650" width="280" height="55" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="500" y="675" text-anchor="middle" font-size="13" fill="#7f1d1d">bcrypt.checkpw(password,</text>
+  <text x="500" y="692" text-anchor="middle" font-size="12" fill="#7f1d1d">stored_hash)</text>
+
+  <!-- Decision: valid? -->
+  <polygon points="500,730 610,785 500,840 390,785" fill="#fef9c3" stroke="#eab308" stroke-width="1.5"/>
+  <text x="500" y="790" text-anchor="middle" font-size="13" fill="#713f12" font-weight="600">Valid?</text>
+
+  <!-- Invalid -> error -->
+  <rect x="60" y="757" width="200" height="55" rx="10" fill="#fecaca" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="160" y="782" text-anchor="middle" font-size="13" fill="#7f1d1d">Show "Invalid</text>
+  <text x="160" y="799" text-anchor="middle" font-size="12" fill="#7f1d1d">username or password"</text>
+
+  <!-- Valid -> set session -->
+  <rect x="360" y="880" width="280" height="70" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="500" y="903" text-anchor="middle" font-size="13" fill="#7f1d1d">Set logged_in = True,</text>
+  <text x="500" y="920" text-anchor="middle" font-size="12" fill="#7f1d1d">store username &amp; role in</text>
+  <text x="500" y="937" text-anchor="middle" font-size="12" fill="#7f1d1d">session_state, st.rerun()</text>
+
+  <!-- App: sidebar + role check -->
+  <rect x="360" y="990" width="280" height="65" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="500" y="1013" text-anchor="middle" font-size="13" fill="#7f1d1d">Sidebar: show user + logout</text>
+  <text x="500" y="1030" text-anchor="middle" font-size="12" fill="#7f1d1d">can_edit = role in STAFF_ROLES</text>
+  <text x="500" y="1045" text-anchor="middle" font-size="11" fill="#991b1b">(Admin/Owner/Manager/Sales)</text>
+
+  <!-- App: main dashboard KPIs -->
+  <rect x="360" y="1095" width="280" height="65" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="500" y="1118" text-anchor="middle" font-size="13" fill="#7f1d1d">Load KPIs: customers,</text>
+  <text x="500" y="1135" text-anchor="middle" font-size="12" fill="#7f1d1d">employees, cars sold, revenue</text>
+
+  <!-- DB: core tables -->
+  <rect x="740" y="1095" width="200" height="65" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="840" y="1118" text-anchor="middle" font-size="13" fill="#14532d">Buyer, Employee,</text>
+  <text x="840" y="1135" text-anchor="middle" font-size="12" fill="#14532d">Car, CarOrder</text>
+
+  <!-- User: picks a view -->
+  <rect x="60" y="1200" width="200" height="65" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="160" y="1223" text-anchor="middle" font-size="13" fill="#1e3a8a">Select a view from</text>
+  <text x="160" y="1240" text-anchor="middle" font-size="12" fill="#1e3a8a">dropdown (8 report types)</text>
+
+  <!-- App: run report query -->
+  <rect x="360" y="1200" width="280" height="65" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="500" y="1223" text-anchor="middle" font-size="13" fill="#7f1d1d">Run matching SQL query,</text>
+  <text x="500" y="1240" text-anchor="middle" font-size="12" fill="#7f1d1d">render Plotly chart +</text>
+  <text x="500" y="1255" text-anchor="middle" font-size="12" fill="#7f1d1d">st.dataframe table</text>
+
+  <!-- Decision: Update Order Status chosen? -->
+  <polygon points="500,1300 620,1360 500,1420 380,1360" fill="#fef9c3" stroke="#eab308" stroke-width="1.5"/>
+  <text x="500" y="1355" text-anchor="middle" font-size="12" fill="#713f12" font-weight="600">"Update Order</text>
+  <text x="500" y="1370" text-anchor="middle" font-size="12" fill="#713f12" font-weight="600">Status" + can_edit?</text>
+
+  <!-- No -> warning -->
+  <rect x="60" y="1335" width="200" height="55" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="160" y="1360" text-anchor="middle" font-size="12" fill="#78350f">Show permission</text>
+  <text x="160" y="1377" text-anchor="middle" font-size="12" fill="#78350f">warning (read-only)</text>
+
+  <!-- Yes -> update order -->
+  <rect x="360" y="1460" width="280" height="65" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="500" y="1483" text-anchor="middle" font-size="13" fill="#7f1d1d">UPDATE CarOrder</text>
+  <text x="500" y="1500" text-anchor="middle" font-size="12" fill="#7f1d1d">SET OrderStatus = ?</text>
+  <text x="500" y="1515" text-anchor="middle" font-size="11" fill="#991b1b">(commit / rollback on error)</text>
+
+  <!-- DB: CarOrder table -->
+  <rect x="740" y="1460" width="200" height="65" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="840" y="1497" text-anchor="middle" font-size="13" fill="#14532d">CarOrder table</text>
+
+  <!-- App: success + rerun -->
+  <rect x="360" y="1570" width="280" height="55" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="500" y="1595" text-anchor="middle" font-size="13" fill="#7f1d1d">Show success toast,</text>
+  <text x="500" y="1612" text-anchor="middle" font-size="12" fill="#7f1d1d">st.rerun()</text>
+
+  <!-- ============ ARROWS ============ -->
+  <!-- open -> connect -->
+  <path d="M260,187 L355,187" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- connect -> init session -->
+  <path d="M500,215 L500,240" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- init -> decision -->
+  <path d="M500,300 L500,325" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- decision NO -> login form -->
+  <path d="M500,440 L500,475" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="515" y="463" font-size="11" fill="#6b7280">No</text>
+  <!-- decision YES -> down to sidebar (long path on right side) -->
+  <path d="M610,385 C 860,385 860,900 640,1010" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="770" y="380" font-size="11" fill="#6b7280">Yes</text>
+
+  <!-- user creds -> login form (bidirectional visually, arrow into app) -->
+  <path d="M260,507 L355,507" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- login form -> query -->
+  <path d="M500,535 L500,560" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- query <-> DB -->
+  <path d="M640,592 L735,592" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- query -> bcrypt check -->
+  <path d="M500,620 L500,645" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- bcrypt -> decision2 -->
+  <path d="M500,705 L500,725" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- decision2 NO -> error -->
+  <path d="M390,785 L260,785" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="330" y="775" font-size="11" fill="#6b7280">No</text>
+  <!-- error loops back up to login form -->
+  <path d="M160,757 L160,535" stroke="#9ca3af" stroke-width="1.5" fill="none" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <!-- decision2 YES -> set session -->
+  <path d="M500,840 L500,875" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="515" y="862" font-size="11" fill="#6b7280">Yes</text>
+  <!-- set session -> sidebar -->
+  <path d="M500,950 L500,985" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- sidebar -> KPIs -->
+  <path d="M500,1055 L500,1090" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- KPIs <-> DB -->
+  <path d="M640,1127 L735,1127" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- KPIs -> user picks view -->
+  <path d="M360,1160 C 200,1180 160,1180 160,1195" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- user picks -> report query -->
+  <path d="M260,1230 L355,1230" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- report query -> decision3 -->
+  <path d="M500,1265 L500,1295" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- decision3 NO -> warning -->
+  <path d="M420,1345 L260,1360" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="330" y="1330" font-size="11" fill="#6b7280">No</text>
+  <!-- decision3 YES -> update order -->
+  <path d="M500,1420 L500,1455" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="515" y="1445" font-size="11" fill="#6b7280">Yes</text>
+  <!-- update order <-> DB -->
+  <path d="M640,1492 L735,1492" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- update order -> success -->
+  <path d="M500,1525 L500,1565" stroke="#4b5563" stroke-width="1.5" fill="none" marker-end="url(#arrow)"/>
+  <!-- success loops back to sidebar/dashboard -->
+  <path d="M640,1595 C 900,1595 900,1030 645,1015" stroke="#9ca3af" stroke-width="1.5" fill="none" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- Legend -->
+  <rect x="40" y="1640" width="16" height="16" fill="#dbeafe" stroke="#3b82f6"/>
+  <text x="62" y="1653" font-size="12" fill="#374151">User action</text>
+  <rect x="170" y="1640" width="16" height="16" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="192" y="1653" font-size="12" fill="#374151">App logic (Streamlit)</text>
+  <rect x="340" y="1640" width="16" height="16" fill="#dcfce7" stroke="#22c55e"/>
+  <text x="362" y="1653" font-size="12" fill="#374151">MySQL query</text>
+  <rect x="470" y="1640" width="16" height="16" fill="#fef9c3" stroke="#eab308"/>
+  <text x="492" y="1653" font-size="12" fill="#374151">Decision point</text>
+</svg>
