@@ -13,17 +13,13 @@ conn = mysql.connector.connect(
     database=st.secrets["database"],
 )
 
-# st.set_page_config(page_title="Dealership Dashboard", page_icon="🏎️", layout="wide")
-
-
-
 # --- 2. Login gate ---
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
 st.set_page_config(
     page_title="Dealership Dashboard",
-    page_icon="🚗",
+    page_icon="🏎️",
     layout="centered" if not st.session_state.logged_in else "wide",
 )
 
@@ -52,17 +48,17 @@ if not st.session_state.logged_in:
 
     st.stop()  # nothing below this runs until logged in
 
-# --- 3. Sidebar: who's logged in + logout ---
+# --- 3. Sidebar ---
 st.sidebar.write(f"Logged in as **{st.session_state.username}** ({st.session_state.role})")
 if st.sidebar.button("Log out"):
     st.session_state.logged_in = False
     st.rerun()
 
-# Only these roles can make changes (e.g. update order status)
+# Only these roles can make changes
 STAFF_ROLES = {"Admin", "Owner", "Manager", "Sales"}
 can_edit = st.session_state.role in STAFF_ROLES
 
-# --- 4. Main dashboard (everything below is the same as before) ---
+# --- 4. Main dashboard ---
 st.title("🚗 Dealership Dashboard")
 
 customers = pd.read_sql("SELECT COUNT(*) AS n FROM Buyer", conn)["n"][0]
@@ -90,7 +86,7 @@ choice = st.selectbox("What else do you want to see?", [
     "Current Inventory",
     "Unsold Vehicles",
     "Low Stock Alert",
-    "Update Order Status",  # staff only, checked below
+    "Update Order Status",  # staff only
 ])
 
 if choice == "Revenue by Brand":
